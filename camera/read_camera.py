@@ -17,7 +17,7 @@ class Webcam:
         self.count = -1
         return self
 
-    def next(self): # Python 2.7
+    def __next__(self):
         self.count += 1
 
         # Read image
@@ -29,6 +29,9 @@ class Webcam:
         img = img0
 
         return self.count, img
+
+    def next(self): # Python 2.7
+        return self.__next__()
 
     def __len__(self):
         return 0
@@ -52,7 +55,7 @@ if __name__ == '__main__':
     if args.infile is None:
         loader = Webcam(infile=0, fps=args.fps)
     else:
-        loader = Webcam(infile=int(args.infile), fps=args.fps)
+        loader = Webcam(infile=args.infile, fps=args.fps)
 
     for (count, img) in loader:
         _, data = cv2.imencode(args.fmt, img)
