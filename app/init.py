@@ -23,12 +23,12 @@ if __name__ == '__main__':
         print('Discovered evidence of a previous initialization - skipping.')
         exit(0)
 
-    # Load the RedisAI model
-    print('Loading model - ', end='')
-    with open('models/mobilenet_v2_1.4_224_frozen.pb', 'rb') as f:
-        model = f.read()
-        res = conn.execute_command('AI.MODELSET', 'mobilenet:model', 'TF', 'CPU', 'INPUTS', 'input', 'OUTPUTS', 'MobilenetV2/Predictions/Reshape_1', model)
-        print(res)
+    # # Load the RedisAI model
+    # print('Loading model - ', end='')
+    # with open('models/mobilenet_v2_1.4_224_frozen.pb', 'rb') as f:
+    #     model = f.read()
+    #     res = conn.execute_command('AI.MODELSET', 'mobilenet:model', 'TF', 'CPU', 'INPUTS', 'input', 'OUTPUTS', 'MobilenetV2/Predictions/Reshape_1', model)
+    #     print(res)
 
     # Load the gear
     print('Loading gear - ', end='')
